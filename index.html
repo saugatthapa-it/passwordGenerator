@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Password Generator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <img src="pin-code.png" alt="Pin Code Icon" style="width:48px;height:48px;display:block;margin:10px auto 0 auto;">
+    <h2>Password Generator</h2>
+    <div style="margin:10px 0;">
+      <label>Password Length: <input type="number" id="length" min="6" max="32" value="14" style="width:50px;"></label>
+    </div>
+    <div style="margin:10px 0;">
+      <label><input type="checkbox" id="upper" checked> Uppercase</label>
+      <label><input type="checkbox" id="lower" checked> Lowercase</label>
+      <label><input type="checkbox" id="number" checked> Numbers</label>
+      <label><input type="checkbox" id="special" checked> Special</label>
+    </div>
+    <button onclick="generatePassword()">Generate Password</button>
+    <input type="text" id="generated-password" readonly style="width:220px;margin:10px 0;">
+    <button onclick="copyGeneratedPassword()" title="Copy">Copy</button>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
