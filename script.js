@@ -1,9 +1,22 @@
 function generatePassword() {
-  const length = Math.max(6, Math.min(32, parseInt(document.getElementById('length').value) || 14));
+  const length = parseInt(document.getElementById('length').value) || 14;
   const useUpper = document.getElementById('upper').checked;
   const useLower = document.getElementById('lower').checked;
   const useNumber = document.getElementById('number').checked;
   const useSpecial = document.getElementById('special').checked;
+  const resultDiv = document.getElementById('gen-result');
+  resultDiv.textContent = '';
+
+  if (length < 10) {
+    resultDiv.textContent = 'Password length must be at least 10.';
+    document.getElementById('generated-password').value = '';
+    return;
+  }
+  if (length > 32) {
+    resultDiv.textContent = 'Password length must not exceed 32.';
+    document.getElementById('generated-password').value = '';
+    return;
+  }
 
   let chars = '';
   if (useUpper) chars += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -12,6 +25,7 @@ function generatePassword() {
   if (useSpecial) chars += '!@#$%^&*()_+[]{}|;:,.<>?';
 
   if (!chars) {
+    resultDiv.textContent = 'Select at least one character type.';
     document.getElementById('generated-password').value = '';
     return;
   }
